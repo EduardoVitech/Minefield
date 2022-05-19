@@ -1,20 +1,4 @@
 import 'package:flutter/material.dart';
+import 'package:minefield/models/pages/minefield_page/minefield_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Minefield',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Text('Minefield'),
-    );
-  }
-}
+void main() => runApp(MineField());

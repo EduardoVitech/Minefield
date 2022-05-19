@@ -60,6 +60,13 @@ class Campo {
     _marcado = !_marcado;
   }
 
+  void reiniciar() {
+    _aberto = false;
+    _marcado = false;
+    _minado = false;
+    _explodido = false;
+  }
+
   bool get minado {
     return _minado;
   }
