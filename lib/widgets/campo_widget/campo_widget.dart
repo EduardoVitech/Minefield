@@ -14,9 +14,9 @@ class CampoWidget extends StatelessWidget {
 
   Widget _getImage() {
     if (campo.aberto && campo.minado && campo.explodido) {
-      return Image.asset('assets/images/bomba_0.jpeg');
+      return Image.asset('assets/images/bomba_0.jpg');
     } else {
-      return Image.asset('assets/images/fechado.jpeg');
+      return Image.asset('assets/images/fechado.jpg');
     }
   }
 
