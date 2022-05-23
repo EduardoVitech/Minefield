@@ -13,8 +13,15 @@ class CampoWidget extends StatelessWidget {
   });
 
   Widget _getImage() {
+    int qtdMinas = campo.qtdeMinasNaVizinhanca;
     if (campo.aberto && campo.minado && campo.explodido) {
+      return Image.asset('assets/images/bomba_1.jpg');
+    } else if (campo.aberto && campo.minado) {
       return Image.asset('assets/images/bomba_0.jpg');
+    } else if (campo.aberto && qtdMinas > 0) {
+      return Image.asset('assets/images/aberto_$qtdMinas.jpg');
+    } else if (campo.marcado) {
+      return Image.asset('assets/images/bandeira.jpg');
     } else {
       return Image.asset('assets/images/fechado.jpg');
     }

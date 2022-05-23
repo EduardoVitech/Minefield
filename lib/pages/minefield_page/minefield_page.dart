@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:minefield/models/campo/campo.dart';
-import 'package:minefield/widgets/campo_widget/campo_widget.dart';
+import 'package:minefield/models/tabuleiro/tabuleiro.dart';
 import 'package:minefield/widgets/resultado/resultado_widget.dart';
+import 'package:minefield/widgets/tabuleiro_widget/tabuleiro_widget.dart';
 
-class MineField extends StatelessWidget {
+class MineField extends StatefulWidget {
+  @override
+  State<MineField> createState() => _MineFieldState();
+}
+
+class _MineFieldState extends State<MineField> {
+  bool? _venceu;
+  final Tabuleiro _tabuleiro = Tabuleiro(
+    linhas: 17,
+    colunas: 15,
+    qtdeBombas: 3,
+  );
+
   void _reiniciar() {
     print('Reiniciar...');
   }
@@ -18,17 +31,16 @@ class MineField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Campo campo = Campo(linha: 0, coluna: 0);
-
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: ResultadoWidget(
-          venceu: null,
+          venceu: _venceu,
           onReiniciar: _reiniciar,
         ),
         body: Container(
-          child: CampoWidget(
-            campo: campo,
+          child: TabuleiroWidget(
+            tabuleiro: _tabuleiro,
             onAbrir: _abrir,
             onAlternarMarcacao: _alternarMarcacao,
           ),
