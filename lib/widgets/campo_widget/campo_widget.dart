@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:minefield/models/campo/campo.dart';
+
+import '../../models/campo/campo.dart';
 
 class CampoWidget extends StatelessWidget {
   final Campo campo;
   final void Function(Campo) onAbrir;
   final void Function(Campo) onAlternarMarcacao;
 
-  CampoWidget({
+  const CampoWidget({
     required this.campo,
     required this.onAbrir,
     required this.onAlternarMarcacao,
-  });
+    Key? key,
+  }) : super(key: key);
 
   Widget _getImage() {
-    int qtdMinas = campo.qtdeMinasNaVizinhanca;
+    int qtdeMinas = campo.qtdeMinasNaVizinhaca;
     if (campo.aberto && campo.minado && campo.explodido) {
       return Image.asset('assets/images/bomba_1.jpg');
     } else if (campo.aberto && campo.minado) {
       return Image.asset('assets/images/bomba_0.jpg');
-    } else if (campo.aberto && qtdMinas > 0) {
-      return Image.asset('assets/images/aberto_$qtdMinas.jpg');
+    } else if (campo.aberto) {
+      return Image.asset('assets/images/aberto_$qtdeMinas.jpg');
     } else if (campo.marcado) {
       return Image.asset('assets/images/bandeira.jpg');
     } else {

@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:minefield/models/explosao/explosao.exception.dart';
+import '../explosao/explosao_exception.dart';
 
 class Campo {
   final int linha;
@@ -41,12 +40,14 @@ class Campo {
       throw ExplosaoException();
     }
 
-    if (vizinhancaSegura) {
-      vizinhos.forEach((v) => v.abrir());
+    if (vizinhacaSegura) {
+      for (var v in vizinhos) {
+        v.abrir();
+      }
     }
   }
 
-  void revelarBombas() {
+  void revelarBomba() {
     if (_minado) {
       _aberto = true;
     }
@@ -89,11 +90,11 @@ class Campo {
     return minadoEMarcado || seguroEAberto;
   }
 
-  bool get vizinhancaSegura {
+  bool get vizinhacaSegura {
     return vizinhos.every((v) => !v.minado);
   }
 
-  int get qtdeMinasNaVizinhanca {
+  int get qtdeMinasNaVizinhaca {
     return vizinhos.where((v) => v.minado).length;
   }
 }
